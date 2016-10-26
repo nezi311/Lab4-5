@@ -26,7 +26,7 @@
 			try{
 				$pdo = new PDO(DBConfig::$type.':host='.DBConfig::$host.';dbname='.DBConfig::$database.';port='.DBConfig::$port, DBConfig::$username, DBConfig::$password );
 				$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				echo 'Połączenie nawiązane!<br>';
+				//echo 'Połączenie nawiązane!<br>';
 				return $pdo;
 
 			}catch(PDOException $e){

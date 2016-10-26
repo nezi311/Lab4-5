@@ -1,5 +1,5 @@
 <?php
-namespace CLASSES
+namespace CLASSES;
 class Osoba
 {
     private $imie;
