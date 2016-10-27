@@ -1,7 +1,29 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    input[type=text]
+    {
+        //margin:auto;
+        //float: right;
+        width:235px;
+    }
+    input[type=number]
+    {
+        //margin:auto;
+        //float: right;
+        width:235px;
+    }
+    label
+    {
+        display:block;
+        width:100px;
+        float: left;
+        //background-color: #ff0000;
+        text-align: left;
+    }
+  </style>
 <body>
-    <form action="script1.php" method="post" >
+    <form action="Script1.php" method="post" >
         <p>
             <label for="txtImie">Imię:</label>
             <input type="text" id="txtImie" name="txtImie"/>
@@ -18,6 +40,7 @@
             <label for="txtFirma">Nazwa firmy:</label>
             <input type="text" id="txtFirma" name="txtFirma"/>
         </p>
+        <input type="submit" value="Wyślij">
     </form>
 </body>
 </html>

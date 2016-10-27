@@ -22,11 +22,11 @@ try
 
 
 
-    $ob1 = new CLASSES\Uzytkownik('Dawid','Dominiak',94010104019,'AsDa');
-    d($ob1);
+    //$ob1 = new CLASSES\Uzytkownik('Dawid','Dominiak',94010104019,'AsDa');
+    // d($ob1);
 
-    $ob2 = new CLASSES\Uzytkownik('Dawid','Dominiak',94010104019,'AsDa');
-    d($ob2);
+    //$ob2 = new CLASSES\Uzytkownik('Dawid','Dominiak',94010104019,'AsDa');
+    // d($ob2);
 
     /*
 
