@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<head>
+    <meta  charset="utf-8;">
+</head>
+
 <body>
     <ul>
         <li><a href="formularz.html">Formularz</a></li>
