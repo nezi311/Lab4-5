@@ -7,6 +7,7 @@ require_once('vendor/autoload.php');
 use CONFIG\dbconfig as DB;
 DB::setDBConfig();
 $pdo = DB::getHandle(); // załączenie uchwytu do wykonywania poleceń na bazie danych
+use \PDO;
 
 class Uzytkownik extends Osoba
 {
@@ -36,8 +37,7 @@ class Uzytkownik extends Osoba
 
                     if($wynik_zapytania)
                     {
-                      print("Udało się dodać naukowca $i $n");
-                      showRooms($this->pesel);
+                      print("<br>Udało się dodać naukowca $i $n");
                     }
                 }
                 catch(PDOException $e)
@@ -49,7 +49,7 @@ class Uzytkownik extends Osoba
         }
         else
         {
-            print("Podany numer pesel nie jest liczbą");
+            print("<br>Podany numer pesel nie jest liczbą");
         }
         $this->firma = $f;
 
@@ -103,28 +103,60 @@ class Uzytkownik extends Osoba
     }
 
     // metoda ma za zadanie pokazywać wynajete przez naukowca pokoje
-    public function showRooms($p)
+    public function showRooms()
     {
       try
       {
-        $stmt = DB::getHandle() -> query('SELECT * FROM zdarzenia WHERE id_naukowca = $p');
+        $stmt = DB::getHandle() -> prepare('SELECT * FROM zdarzenia WHERE id_naukowca = :tempPesel');
+        $stmt -> bindValue(':tempPesel',$this->pesel,PDO::PARAM_INT);
+        $stmt -> execute();
+        //$row=$stmt -> fetch(PDO::FETCH_ASSOC);
 
         if($stmt!=false)
         {
-          print("Sale wynajęte przez naukowca.");
-        }
-        while($row=$stmt -> fetch())
-        {
-          print('nr sali : '.$row["nr_sali"].' id');
+          $tempImie = parent::getImie();
+          $tempNazwisko = parent::getNazwisko();
+          print("<h1>Sale wynajęte przez naukowca $tempImie $tempNazwisko .</h1>");
+          while($row=$stmt -> fetch(PDO::FETCH_ASSOC))
+          {
+            $sala = $row["nr_sali"];
+            print('<h3>nr sali : '.$sala.'<h3>');
+          }
         }
       }
       catch(PDOException $e)
       {
         	echo 'Wystąpił błąd biblioteki PDO: ' . $e->getMessage();
       }
+    }
+
+    public function addToEvents($ev)
+    {
+      try
+      {
+        $stmt = DB::getHandle() -> prepare('INSERT zdarzenia VALUES (NULL,:nr,:naukowiec)'); // przygotowanie zapytania do bazy danych
+
+        // podpięcie parametrow pod przygotowany uchwyt :pesel
+        // robimy to w celu profilaktycznym, aby atak sql_injection sie nie powiodl
+        $stmt -> bindValue(':nr',$ev,PDO::PARAM_STR);
+        $stmt -> bindValue(':naukowiec',$this->pesel,PDO::PARAM_INT);
+
+
+        $stmt -> execute(); // wykonujemy zapytanie
+
+        if($stmt!=false)
+        {
+          print("Udało się wynająć pokoj.");
+          $this->showRooms();
+        }
 
 
 
+      }
+      catch(PDOException $e)
+      {
+        	echo 'Wystąpił błąd biblioteki PDO: ' . $e->getMessage();
+      }
 
     }
 

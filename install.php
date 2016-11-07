@@ -28,11 +28,10 @@ try
     //$ob2 = new CLASSES\Uzytkownik('Dawid','Dominiak',94010104019,'AsDa');
     // d($ob2);
 
-    /*
 
     //d($stmt);
 
-    $stmt = $pdo->query("INSERT naukowcy VALUES(94010104019,'Dawid','Dominiak','AsDa');");
+    $stmt = $pdo->query("INSERT naukowcy VALUES(94051904017,'Dawid','Dominiak','AsDa');");
     //d($stmt);
     $stmt = $pdo->query("INSERT naukowcy VALUES(94011104019,'Damian','Krupnik','DDas');");
     //d($stmt);
@@ -45,9 +44,9 @@ try
 
 
 
-    $stmt = $pdo->query("INSERT INTO zdarzenia VALUES(NULL,'310',94010104019);");
+    $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'310',94051904017);");
     d($stmt);
-    $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'311',94010104019);");
+    $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'311',94051904017);");
     d($stmt);
     $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'200',94011104019);");
     d($stmt);
@@ -58,7 +57,9 @@ try
     $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'114',94326547891);");
     d($stmt);
 
- */
+
+
+ print("<h1>Zainicjalizowano bazę danych.</h1>");
 
 }
 
