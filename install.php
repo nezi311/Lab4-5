@@ -52,7 +52,7 @@ try
     d($stmt);
     $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'11',94010654789);");
     d($stmt);
-    $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'2b',94051632145);");
+    $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'20',94051632145);");
     d($stmt);
     $stmt = $pdo->query("INSERT zdarzenia VALUES(NULL,'114',94326547891);");
     d($stmt);

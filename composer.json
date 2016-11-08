@@ -1,5 +1,6 @@
 {
     "require":{
+    "doctrine/orm": "2.4.*",
     "raveren/kint":"0.9"
 },
    "autoload":{
